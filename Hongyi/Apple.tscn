@@ -1,0 +1,32 @@
+[gd_scene load_steps=6 format=2]
+
+[ext_resource path="res://Hongyi/Apple.gd" type="Script" id=1]
+[ext_resource path="res://Hongyi/tile000.png" type="Texture" id=2]
+[ext_resource path="res://Hongyi/tile013.png" type="Texture" id=3]
+
+[sub_resource type="CircleShape2D" id=1]
+radius = 9.5
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 2 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "apple",
+"speed": 5.0
+} ]
+
+[node name="Apple" type="Area2D"]
+scale = Vector2( 2, 2 )
+script = ExtResource( 1 )
+__meta__ = {
+"_edit_group_": true
+}
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "apple"
+
+[connection signal="area_entered" from="." to="." method="_on_Apple_area_entered"]
